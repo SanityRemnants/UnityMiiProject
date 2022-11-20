@@ -1,0 +1,32 @@
+{
+  "name": "com.unity.2d.common",
+  "displayName": "2D Common",
+  "version": "7.0.1",
+  "unity": "2022.1",
+  "description": "2D Common is a package that contains shared functionalities that are used by most of the other 2D packages.",
+  "keywords": [
+    "2d"
+  ],
+  "category": "2D",
+  "dependencies": {
+    "com.unity.2d.sprite": "1.0.0",
+    "com.unity.mathematics": "1.1.0",
+    "com.unity.modules.uielements": "1.0.0",
+    "com.unity.modules.animation": "1.0.0",
+    "com.unity.burst": "1.7.3"
+  },
+  "relatedPackages": {
+    "com.unity.2d.common.tests": "7.0.1"
+  },
+  "_upm": {
+    "changelog": "### Changed\n- Refactored internal triangulation and tessellation APIs.\n- Update com.unity.burst dependency version to 1.7.3 to support latest PS4 SDK."
+  },
+  "upmCi": {
+    "footprint": "15c7dc5720f02155f8f17824d22da5890cb4967f"
+  },
+  "repository": {
+    "url": "https://github.cds.internal.unity3d.com/unity/2d.git",
+    "type": "git",
+    "revision": "6efabf98e011c774ea92b1bdece8b2339dba79fd"
+  }
+}
