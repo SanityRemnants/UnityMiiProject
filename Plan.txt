@@ -1,5 +1,4 @@
 Platforma która znika
-Ruchoma platforma
 Plan poziomu przykładowego plus upiększenie go
 Znajdźka
 Nagranie przejścia poziomu
