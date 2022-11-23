@@ -148,4 +148,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToFall: 1.5
   cooldown: 9
-  collider: {fileID: 0}
+  collider: {fileID: 7029563376672359440}
