@@ -394,6 +394,8 @@
 "Assets/Scripts/Camera2DFollow.cs"
 "Assets/Scripts/CameraFollow.cs"
 "Assets/Scripts/FoxControler.cs"
+"Assets/Scripts/PlatformFade.cs"
+"Assets/Scripts/PlatformMovement.cs"
 -langversion:9.0
 
 /deterministic

@@ -9,7 +9,8 @@ public class FoxControler : MonoBehaviour
     private Animator animator;
     private bool isWalking;
     private bool isFacingRight=true;
-    private int score = 0;  
+    private int score = 0;
+    private float speed;
 
     public const float rayLength = 0.4f;
     public float jumpforce = 5.0f;
@@ -17,7 +18,7 @@ public class FoxControler : MonoBehaviour
 
     private void Start()
     {
-        
+        speed = moveSpeed;
     }
 
     private void Update()
