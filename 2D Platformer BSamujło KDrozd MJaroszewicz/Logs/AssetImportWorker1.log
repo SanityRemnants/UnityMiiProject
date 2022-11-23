@@ -1,23 +1,23 @@
 Using pre-set license
 Built from '2022.1/staging' branch; Version is '2022.1.18f1 (8a091f9adba4) revision 9046303'; Using compiler version '192829333'; Build Type 'Release'
-OS: 'Windows 10  (10.0.19044) 64bit Professional' Language: 'en' Physical Memory: 32677 MB
+OS: 'Windows 10  (10.0.19045) 64bit Core' Language: 'pl' Physical Memory: 16231 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
 
 COMMAND LINE ARGUMENTS:
-C:\Program Files\Editors\2022.1.18f1\Editor\Unity.exe
+E:\unity\2022.1.18f1\Editor\Unity.exe
 -adb2
 -batchMode
 -noUpm
 -name
 AssetImportWorker1
 -projectPath
-D:/docs/UnityMiiProject/2D Platformer BSamujło KDrozd MJaroszewicz
+E:/git/UnityMiiProject/2D Platformer BSamujło KDrozd MJaroszewicz
 -logFile
 Logs/AssetImportWorker1.log
 -srvPort
-60098
-Successfully changed project path to: D:/docs/UnityMiiProject/2D Platformer BSamujło KDrozd MJaroszewicz
-D:/docs/UnityMiiProject/2D Platformer BSamujło KDrozd MJaroszewicz
+51044
+Successfully changed project path to: E:/git/UnityMiiProject/2D Platformer BSamujło KDrozd MJaroszewicz
+E:/git/UnityMiiProject/2D Platformer BSamujło KDrozd MJaroszewicz
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
     "memorysetup-bucket-allocator-granularity=16"
     "memorysetup-bucket-allocator-bucket-count=8"
@@ -47,120 +47,111 @@ D:/docs/UnityMiiProject/2D Platformer BSamujło KDrozd MJaroszewicz
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Refreshing native plugins compatible for Editor in 118.46 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 293.02 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2022.1.18f1 (8a091f9adba4)
-[Subsystems] Discovering subsystems at path C:/Program Files/Editors/2022.1.18f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path D:/docs/UnityMiiProject/2D Platformer BSamujło KDrozd MJaroszewicz/Assets
+[Subsystems] Discovering subsystems at path E:/unity/2022.1.18f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path E:/git/UnityMiiProject/2D Platformer BSamujło KDrozd MJaroszewicz/Assets
 GfxDevice: creating device client; threaded=0; jobified=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
-    Renderer: NVIDIA GeForce RTX 3070 (ID=0x2484)
+    Renderer: NVIDIA GeForce GTX 1050 (ID=0x1c92)
     Vendor:   NVIDIA
-    VRAM:     8031 MB
-    Driver:   31.0.15.2698
+    VRAM:     4021 MB
+    Driver:   30.0.15.1123
 Initialize mono
-Mono path[0] = 'C:/Program Files/Editors/2022.1.18f1/Editor/Data/Managed'
-Mono path[1] = 'C:/Program Files/Editors/2022.1.18f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
-Mono config path = 'C:/Program Files/Editors/2022.1.18f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56988
+Mono path[0] = 'E:/unity/2022.1.18f1/Editor/Data/Managed'
+Mono path[1] = 'E:/unity/2022.1.18f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'E:/unity/2022.1.18f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56900
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: C:/Program Files/Editors/2022.1.18f1/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
-Register platform support module: C:/Program Files/Editors/2022.1.18f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
-Register platform support module: C:/Program Files/Editors/2022.1.18f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Register platform support module: C:/Program Files/Editors/2022.1.18f1/Editor/Data/PlaybackEngines/MetroSupport/UnityEditor.UWP.Extensions.dll
-Registered in 0.010837 seconds.
-Native extension for UWP target not found
+Register platform support module: E:/unity/2022.1.18f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.003778 seconds.
 Native extension for WindowsStandalone target not found
-Native extension for Android target not found
-Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 116.67 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 233.94 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.712 seconds
+- Completed reload, in  1.393 seconds
 Domain Reload Profiling:
-	ReloadAssembly (713ms)
-		BeginReloadAssembly (85ms)
+	ReloadAssembly (1394ms)
+		BeginReloadAssembly (166ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (513ms)
-			LoadAssemblies (81ms)
+		EndReloadAssembly (1026ms)
+			LoadAssemblies (164ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (107ms)
-				TypeCache.Initialize (107ms)
-					TypeCache.ScanAssembly (105ms)
-				ResolveRequiredComponents (0ms)
+			SetupTypeCache (239ms)
+				TypeCache.Initialize (238ms)
+					TypeCache.ScanAssembly (236ms)
+				ResolveRequiredComponents (1ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (25ms)
-			SetupLoadedEditorAssemblies (329ms)
+			RebuildScriptCaches (56ms)
+			SetupLoadedEditorAssemblies (630ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (56ms)
-				SetLoadedEditorAssemblies (9ms)
-				RefreshPlugins (117ms)
-				BeforeProcessingInitializeOnLoad (1ms)
-				ProcessInitializeOnLoadAttributes (103ms)
-				ProcessInitializeOnLoadMethodAttributes (42ms)
+				InitializePlatformSupportModulesInManaged (14ms)
+				SetLoadedEditorAssemblies (14ms)
+				RefreshPlugins (234ms)
+				BeforeProcessingInitializeOnLoad (2ms)
+				ProcessInitializeOnLoadAttributes (279ms)
+				ProcessInitializeOnLoadMethodAttributes (88ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.009660 seconds.
+Registered in 0.015679 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image D:\docs\UnityMiiProject\2D Platformer BSamujło KDrozd MJaroszewicz\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image D:\docs\UnityMiiProject\2D Platformer BSamujło KDrozd MJaroszewicz\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-Native extension for UWP target not found
+Symbol file LoadedFromMemory doesn't match image E:\git\UnityMiiProject\2D Platformer BSamujło KDrozd MJaroszewicz\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image E:\git\UnityMiiProject\2D Platformer BSamujło KDrozd MJaroszewicz\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
 Native extension for WindowsStandalone target not found
-Native extension for Android target not found
-Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 113.53 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 332.31 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.385 seconds
+- Completed reload, in  3.663 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1386ms)
-		BeginReloadAssembly (215ms)
+	ReloadAssembly (3664ms)
+		BeginReloadAssembly (297ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (5ms)
+			DisableScriptedObjects (16ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (121ms)
-		EndReloadAssembly (1060ms)
-			LoadAssemblies (99ms)
+			CreateAndSetChildDomain (40ms)
+		EndReloadAssembly (3034ms)
+			LoadAssemblies (249ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (262ms)
-				TypeCache.Initialize (253ms)
-					TypeCache.ScanAssembly (249ms)
-				ResolveRequiredComponents (10ms)
+			SetupTypeCache (1003ms)
+				TypeCache.Initialize (978ms)
+					TypeCache.ScanAssembly (966ms)
+				ResolveRequiredComponents (25ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (67ms)
-			SetupLoadedEditorAssemblies (591ms)
+			RebuildScriptCaches (161ms)
+			SetupLoadedEditorAssemblies (1449ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (17ms)
-				SetLoadedEditorAssemblies (7ms)
-				RefreshPlugins (114ms)
-				BeforeProcessingInitializeOnLoad (114ms)
-				ProcessInitializeOnLoadAttributes (245ms)
-				ProcessInitializeOnLoadMethodAttributes (84ms)
-				AfterProcessingInitializeOnLoad (10ms)
+				InitializePlatformSupportModulesInManaged (9ms)
+				SetLoadedEditorAssemblies (14ms)
+				RefreshPlugins (332ms)
+				BeforeProcessingInitializeOnLoad (283ms)
+				ProcessInitializeOnLoadAttributes (602ms)
+				ProcessInitializeOnLoadMethodAttributes (202ms)
+				AfterProcessingInitializeOnLoad (6ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (5ms)
+			AwakeInstancesAfterBackupRestoration (18ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.09 seconds
-Refreshing native plugins compatible for Editor in 1.09 ms, found 4 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.11 seconds
+Refreshing native plugins compatible for Editor in 1.96 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 5551 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 40 unused Assets / (347.9 KB). Loaded Objects now: 6009.
+Unloading 40 unused Assets / (347.8 KB). Loaded Objects now: 6007.
 Memory consumption went from 0.86 GB to 0.86 GB.
-Total: 3.955600 ms (FindLiveObjects: 0.501900 ms CreateObjectMapping: 0.158400 ms MarkObjects: 3.154300 ms  DeleteObjects: 0.140000 ms)
+Total: 5.607900 ms (FindLiveObjects: 0.596100 ms CreateObjectMapping: 0.541200 ms MarkObjects: 4.276900 ms  DeleteObjects: 0.191200 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -172,3 +163,9 @@ AssetImportParameters requested are different than current active one (requested
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 30612.102180 seconds.
+  path: Assets/Scenes/191687_188567_188568.unity
+  artifactKey: Guid(5474ecfe70e73894392a62911f4e0dd1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/191687_188567_188568.unity using Guid(5474ecfe70e73894392a62911f4e0dd1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '32b52111051e0c8d93eb34b7275fee2e') in 0.013859 seconds 

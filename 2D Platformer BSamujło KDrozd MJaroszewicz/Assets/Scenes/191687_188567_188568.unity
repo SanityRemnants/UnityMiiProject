@@ -2500,7 +2500,7 @@ MonoBehaviour:
   xMargin: 0
   yMargin: 0
   xSmooth: 6
-  ySmooth: 4
+  ySmooth: 10
   maxXAndY: {x: 1000, y: 1000}
   minXAndY: {x: -1000, y: -1000}
 --- !u!4 &848631391 stripped
@@ -2768,7 +2768,7 @@ Grid:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1175524248}
   m_Enabled: 1
-  m_CellSize: {x: 0.16, y: 0.16, z: 0}
+  m_CellSize: {x: 0.159, y: 0.159, z: 0}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0

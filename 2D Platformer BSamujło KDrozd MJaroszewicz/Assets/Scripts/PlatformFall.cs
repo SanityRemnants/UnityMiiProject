@@ -9,10 +9,12 @@ public class PlatformFall : MonoBehaviour
     public float cooldown = 9;
     private bool touched;
     private Vector3 initPosition;
-    // Start is called before the first frame update
+    public BoxCollider2D collider;
+   //  Start is called before the first frame update
     void Start()
     {
         initPosition = transform.position;
+        collider = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -25,17 +27,26 @@ public class PlatformFall : MonoBehaviour
                 timeToFall -= Time.deltaTime;
             }else if(cooldown>0)
             {
+                transform.position = new Vector3(transform.position.x, transform.position.y, 1);
                 rigidBody.constraints = RigidbodyConstraints2D.None;
-                rigidBody.gravityScale = 1;
+                rigidBody.gravityScale = 2;
                 cooldown -= Time.deltaTime;
-            }else
+                collider.enabled = false;
+                
+                
+            }
+            else
             {
+                transform.position = new Vector3(transform.position.x, transform.position.y, 0);
                 touched = false;
                 cooldown = 9;
                 timeToFall = 1.5f;
                 rigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
                 rigidBody.gravityScale = 0;
                 transform.position = initPosition;
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                collider.enabled = true;
+
             }
             
         }
