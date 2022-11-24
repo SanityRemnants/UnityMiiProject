@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class FoxControler : MonoBehaviour
 {
     [Range(0.01f, 20)][SerializeField] private float moveSpeed = 0.1f;
@@ -11,13 +12,15 @@ public class FoxControler : MonoBehaviour
     private bool isFacingRight=true;
     private int score = 0;
     public bool hasKey = false;
-
+    
     public const float rayLength = 0.4f;
     public float jumpforce = 5.0f;
     public LayerMask groundLayer;
 
+
     private void Start()
     {
+        
     }
 
     private void Update()
@@ -82,12 +85,14 @@ public class FoxControler : MonoBehaviour
         if(other.CompareTag("bonus"))
         {
             score++;
+            ScoreMenager.instance.addPoint(1);
             Debug.Log("Score: " + score);
             other.gameObject.SetActive(false);
         }
         else if (other.CompareTag("gem"))
         {
             score+=5;
+            ScoreMenager.instance.addPoint(5);
             Debug.Log("Score: " + score);
             other.gameObject.SetActive(false);
         }
@@ -100,6 +105,7 @@ public class FoxControler : MonoBehaviour
         {
             if(hasKey)
             {
+                //zakoñczenie gry(TODO)
                 Application.Quit();
             }
         }

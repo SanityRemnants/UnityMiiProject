@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlatformFall : MonoBehaviour
 {
     private Rigidbody2D rigidBody;
-    public float timeToFall = 1.5f;
-    public float cooldown = 9;
+    public float timeToFall = 0.5f;
+    public float cooldown = 4;
 
     private bool touched;
     private Vector3 initPosition;
