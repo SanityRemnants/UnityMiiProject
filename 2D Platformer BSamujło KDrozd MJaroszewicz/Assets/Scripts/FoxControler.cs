@@ -86,5 +86,11 @@ public class FoxControler : MonoBehaviour
             Debug.Log("Score: " + score);
             other.gameObject.SetActive(false);
         }
+        if (other.CompareTag("gem"))
+        {
+            score+=5;
+            Debug.Log("Score: " + score);
+            other.gameObject.SetActive(false);
+        }
     }
 }
