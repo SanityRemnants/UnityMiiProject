@@ -51,8 +51,15 @@ public class FoxControler : MonoBehaviour
             {
                 jump();
             }
-            animator.SetBool("isWalking", isWalking);
-            animator.SetBool("isGrounded", isGrounded());
+            animator.SetBool("isWalking", isWalking);           
+            if(!isGrounded())
+            {
+                animator.SetBool("isGrounded", false);
+                animator.SetBool("isFalling", isFalling());
+            }else
+            {
+                animator.SetBool("isGrounded", true);
+            }
             //Debug.DrawRay(transform.position, rayLength*Vector3.down, Color.white, 1, false);
         }
         if (Input.GetKey(KeyCode.Escape))
@@ -71,6 +78,10 @@ public class FoxControler : MonoBehaviour
     private bool isGrounded()
     {
         return Physics2D.Raycast(this.transform.position, Vector2.down, rayLength, groundLayer.value);
+    }
+    private bool isFalling()
+    {
+        return rigidBody.velocity.y < -0.2f;
     }
 
     private void jump()
