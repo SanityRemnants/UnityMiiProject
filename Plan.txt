@@ -1,4 +1,3 @@
 Platforma która znika
-Plan poziomu przykładowego plus upiększenie go
-Znajdźka
+Plan poziomu przykładowego plus upiększenie go (prawie done)
 Nagranie przejścia poziomu
