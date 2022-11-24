@@ -10,7 +10,7 @@ public class FoxControler : MonoBehaviour
     private bool isWalking;
     private bool isFacingRight=true;
     private int score = 0;
-    private float speed;
+    public bool hasKey = false;
 
     public const float rayLength = 0.4f;
     public float jumpforce = 5.0f;
@@ -18,7 +18,6 @@ public class FoxControler : MonoBehaviour
 
     private void Start()
     {
-        speed = moveSpeed;
     }
 
     private void Update()
@@ -85,6 +84,18 @@ public class FoxControler : MonoBehaviour
             score++;
             Debug.Log("Score: " + score);
             other.gameObject.SetActive(false);
+        }
+        else if (other.CompareTag("Key"))
+        {
+            hasKey = true;
+            other.gameObject.SetActive(false);
+        }
+        else if (other.CompareTag("Exit"))
+        {
+            if(hasKey)
+            {
+                Application.Quit();
+            }
         }
     }
 }

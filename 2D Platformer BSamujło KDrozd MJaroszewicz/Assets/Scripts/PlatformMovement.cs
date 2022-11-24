@@ -11,7 +11,7 @@ public class PlatformMovement : MonoBehaviour
     private int currentPoint;
     void Start()
     {
-        transform.position = points[startingPoint].position;
+        currentPoint = startingPoint;
     }
 
     // Update is called once per frame
