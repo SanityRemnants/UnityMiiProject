@@ -146,5 +146,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e97eb8c0a5a5f34d89960db8db957ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToFall: 1.5
-  cooldown: 9
+  timeToFall: 0.5
+  cooldown: 4

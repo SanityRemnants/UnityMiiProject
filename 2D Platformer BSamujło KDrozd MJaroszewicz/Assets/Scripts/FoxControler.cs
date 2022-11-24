@@ -11,7 +11,8 @@ public class FoxControler : MonoBehaviour
     private bool isWalking;
     private bool isFacingRight=true;
     private int score = 0;
-    public bool hasKey = false;
+    private bool hasKey = false;
+    private bool victory = false;
     
     public const float rayLength = 0.4f;
     public float jumpforce = 5.0f;
@@ -26,29 +27,39 @@ public class FoxControler : MonoBehaviour
     private void Update()
     {
         isWalking = false;
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        if (victory == false)
         {
-            isWalking = true;
-            transform.Translate(moveSpeed * Time.deltaTime, 0.0f, 0.0f, Space.World);
-            if (!isFacingRight)
+            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             {
-                flip();
+                isWalking = true;
+                transform.Translate(moveSpeed * Time.deltaTime, 0.0f, 0.0f, Space.World);
+                if (!isFacingRight)
+                {
+                    flip();
+                }
             }
-        } if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
-        {
-            isWalking = true;
-            transform.Translate(-moveSpeed * Time.deltaTime, 0.0f, 0.0f, Space.World);
-            if(isFacingRight)
+            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
             {
-                flip();
+                isWalking = true;
+                transform.Translate(-moveSpeed * Time.deltaTime, 0.0f, 0.0f, Space.World);
+                if (isFacingRight)
+                {
+                    flip();
+                }
             }
-        }if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
-        {
-            jump();
+            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
+            {
+                jump();
+            }
+            animator.SetBool("isWalking", isWalking);
+            animator.SetBool("isGrounded", isGrounded());
+            //Debug.DrawRay(transform.position, rayLength*Vector3.down, Color.white, 1, false);
         }
-        animator.SetBool("isWalking", isWalking);
-        animator.SetBool("isGrounded", isGrounded());
-        //Debug.DrawRay(transform.position, rayLength*Vector3.down, Color.white, 1, false);
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Debug.Log("esc");
+            Application.Quit();
+        }
     }
 
     private void Awake()
@@ -105,8 +116,13 @@ public class FoxControler : MonoBehaviour
         {
             if(hasKey)
             {
-                //zakoñczenie gry(TODO)
-                Application.Quit();
+                victory = true;
+                ScoreMenager.instance.victory();
+                Time.timeScale = 0;
+            }
+            else
+            {
+                ScoreMenager.instance.youNeedKey();
             }
         }
 
