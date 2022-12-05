@@ -393,6 +393,7 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Scripts/Camera2DFollow.cs"
 "Assets/Scripts/CameraFollow.cs"
+"Assets/Scripts/EnemyController.cs"
 "Assets/Scripts/FoxControler.cs"
 "Assets/Scripts/PlatformFade.cs"
 "Assets/Scripts/PlatformFall.cs"

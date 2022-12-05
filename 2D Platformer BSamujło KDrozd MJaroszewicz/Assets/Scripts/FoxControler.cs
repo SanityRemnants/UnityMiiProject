@@ -11,9 +11,11 @@ public class FoxControler : MonoBehaviour
     private bool isWalking;
     private bool isFacingRight=true;
     private int score = 0;
-    private bool hasKey = false;
+    private int kys = 0;
     private bool victory = false;
-    
+
+    private Vector2 startPosition;
+    private int lives = 3;
     public const float rayLength = 0.4f;
     public float jumpforce = 5.0f;
     public LayerMask groundLayer;
@@ -73,6 +75,7 @@ public class FoxControler : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        startPosition = transform.position;
     }
 
     private bool isGrounded()
@@ -120,12 +123,12 @@ public class FoxControler : MonoBehaviour
         }
         else if (other.CompareTag("Key"))
         {
-            hasKey = true;
+            kys++;
             other.gameObject.SetActive(false);
         }
         else if (other.CompareTag("Exit"))
         {
-            if(hasKey)
+            if(kys==3)
             {
                 victory = true;
                 ScoreMenager.instance.victory();
@@ -135,7 +138,38 @@ public class FoxControler : MonoBehaviour
             {
                 ScoreMenager.instance.youNeedKey();
             }
+        } else if (other.CompareTag("Enemy"))
+        {
+            if (transform.position.y > other.gameObject.transform.position.y)
+            {
+                score += 3;
+                ScoreMenager.instance.addPoint(3);
+                Debug.Log("Killed an enemy");
+                Debug.Log("Score: " + score);
+            } else
+            {
+                transform.position = startPosition;
+                lives--;
+                if(lives == 0)
+                {
+                    death();
+                }
+            }
+        } else if (other.CompareTag("Live"))
+        {
+            lives++;
+            other.gameObject.SetActive(false);
+            Debug.Log(lives);
+        } else if (other.CompareTag("Death"))
+        {
+
+                death();
         }
 
+    }
+    private void death()
+    {
+        ScoreMenager.instance.death();
+        Time.timeScale = 0;
     }
 }

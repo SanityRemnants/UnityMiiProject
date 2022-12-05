@@ -38,6 +38,11 @@ public class ScoreMenager : MonoBehaviour
     {
         VictoryText.text = "VICTORY";
     }
+
+    public void death()
+    {
+        VictoryText.text = "GAME OVER";
+    }
     // Update is called once per frame
     void Update()
     {
