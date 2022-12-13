@@ -11,11 +11,9 @@ public class FoxControler : MonoBehaviour
     private bool isWalking;
     private bool isFacingRight=true;
     private int score = 0;
-    private int kys = 0;
     private bool victory = false;
 
     private Vector2 startPosition;
-    private int lives = 3;
     public const float rayLength = 0.4f;
     public float jumpforce = 5.0f;
     public LayerMask groundLayer;
@@ -123,12 +121,12 @@ public class FoxControler : MonoBehaviour
         }
         else if (other.CompareTag("Key"))
         {
-            kys++;
+            ScoreMenager.instance.addkey();
             other.gameObject.SetActive(false);
         }
         else if (other.CompareTag("Exit"))
         {
-            if(kys==3)
+            if(ScoreMenager.instance.checkKeys()==3)
             {
                 victory = true;
                 ScoreMenager.instance.victory();
@@ -149,17 +147,16 @@ public class FoxControler : MonoBehaviour
             } else
             {
                 transform.position = startPosition;
-                lives--;
-                if(lives == 0)
+                ScoreMenager.instance.subhp();
+                if(ScoreMenager.instance.life == 0)
                 {
                     death();
                 }
             }
         } else if (other.CompareTag("Live"))
         {
-            lives++;
+            ScoreMenager.instance.addhp();
             other.gameObject.SetActive(false);
-            Debug.Log(lives);
         } else if (other.CompareTag("Death"))
         {
 

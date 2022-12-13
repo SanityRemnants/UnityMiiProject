@@ -9,7 +9,7 @@ public class EnemyController : MonoBehaviour
     private Animator animator;
     private bool isFacingRight = false;
     private float startPositionX;
-    private float moveRange = 1.0f;
+    public float moveRange = 1.0f;
     private bool isMovingRight = false;
 
 

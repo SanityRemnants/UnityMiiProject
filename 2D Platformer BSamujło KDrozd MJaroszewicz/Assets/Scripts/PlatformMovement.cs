@@ -9,6 +9,7 @@ public class PlatformMovement : MonoBehaviour
     public Transform[] points;
     // Start is called before the first frame update
     private int currentPoint;
+    private bool movingForward = true;
     void Start()
     {
         currentPoint = startingPoint;
@@ -19,8 +20,14 @@ public class PlatformMovement : MonoBehaviour
     {
         if(Vector2.Distance(transform.position,points[currentPoint].position) < 0.02f)
         {
-            currentPoint++;
-            currentPoint = currentPoint % points.Length;
+            if(currentPoint==points.Length-1)
+            {
+                movingForward = false;
+            }else if(currentPoint==0)
+            {
+                movingForward = true;
+            }
+           currentPoint = movingForward ? currentPoint+1 : currentPoint-1;          
         }
         transform.position = Vector2.MoveTowards(transform.position, points[currentPoint].position, speed * Time.deltaTime);
     }
