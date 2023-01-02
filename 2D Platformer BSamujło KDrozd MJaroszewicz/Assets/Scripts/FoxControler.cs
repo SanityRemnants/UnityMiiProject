@@ -11,7 +11,6 @@ public class FoxControler : MonoBehaviour
     private bool isWalking;
     private bool isFacingRight=true;
     private int score = 0;
-    private bool victory = false;
 
     private Vector2 startPosition;
     public const float rayLength = 0.4f;
@@ -27,45 +26,41 @@ public class FoxControler : MonoBehaviour
     private void Update()
     {
         isWalking = false;
-        if (victory == false)
-        {
-            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
-            {
-                isWalking = true;
-                transform.Translate(moveSpeed * Time.deltaTime, 0.0f, 0.0f, Space.World);
-                if (!isFacingRight)
+        if (ScoreMenager.instance.currentGameState == GameState.GS_GAME)
+        {       
+                if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
                 {
-                    flip();
+                    isWalking = true;
+                    transform.Translate(moveSpeed * Time.deltaTime, 0.0f, 0.0f, Space.World);
+                    if (!isFacingRight)
+                    {
+                        flip();
+                    }
                 }
-            }
-            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
-            {
-                isWalking = true;
-                transform.Translate(-moveSpeed * Time.deltaTime, 0.0f, 0.0f, Space.World);
-                if (isFacingRight)
+                if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
                 {
-                    flip();
+                    isWalking = true;
+                    transform.Translate(-moveSpeed * Time.deltaTime, 0.0f, 0.0f, Space.World);
+                    if (isFacingRight)
+                    {
+                        flip();
+                    }
                 }
-            }
-            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
-            {
-                jump();
-            }
-            animator.SetBool("isWalking", isWalking);           
-            if(!isGrounded())
-            {
-                animator.SetBool("isGrounded", false);
-                animator.SetBool("isFalling", isFalling());
-            }else
-            {
-                animator.SetBool("isGrounded", true);
-            }
-            //Debug.DrawRay(transform.position, rayLength*Vector3.down, Color.white, 1, false);
-        }
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            Debug.Log("esc");
-            Application.Quit();
+                if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
+                {
+                    jump();
+                }
+                animator.SetBool("isWalking", isWalking);
+                if (!isGrounded())
+                {
+                    animator.SetBool("isGrounded", false);
+                    animator.SetBool("isFalling", isFalling());
+                }
+                else
+                {
+                    animator.SetBool("isGrounded", true);
+                }
+                //Debug.DrawRay(transform.position, rayLength*Vector3.down, Color.white, 1, false);
         }
     }
 
@@ -90,8 +85,6 @@ public class FoxControler : MonoBehaviour
         if (isGrounded())
         {
             rigidBody.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);
-
-            Debug.Log("Jumping");
         }
     }
 
@@ -126,16 +119,8 @@ public class FoxControler : MonoBehaviour
         }
         else if (other.CompareTag("Exit"))
         {
-            if(ScoreMenager.instance.checkKeys()==3)
-            {
-                victory = true;
-                ScoreMenager.instance.victory();
-                Time.timeScale = 0;
-            }
-            else
-            {
-                ScoreMenager.instance.youNeedKey();
-            }
+            ScoreMenager.instance.ReachExit();
+  
         } else if (other.CompareTag("Enemy"))
         {
             if (transform.position.y > other.gameObject.transform.position.y)
@@ -150,7 +135,7 @@ public class FoxControler : MonoBehaviour
                 ScoreMenager.instance.subhp();
                 if(ScoreMenager.instance.life == 0)
                 {
-                    death();
+                    Death();
                 }
             }
         } else if (other.CompareTag("Live"))
@@ -158,15 +143,11 @@ public class FoxControler : MonoBehaviour
             ScoreMenager.instance.addhp();
             other.gameObject.SetActive(false);
         } else if (other.CompareTag("Death"))
-        {
-
-                death();
-        }
+                Death();
 
     }
-    private void death()
+    private void Death()
     {
         ScoreMenager.instance.death();
-        Time.timeScale = 0;
     }
 }

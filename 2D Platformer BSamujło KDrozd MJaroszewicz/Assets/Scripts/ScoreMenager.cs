@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public enum GameState { GS_PAUSEMENU, GS_GAME, GS_LEVELCOMPLETED, GS_GAME_OVER }
@@ -10,10 +11,16 @@ public class ScoreMenager : MonoBehaviour
 {
     public static ScoreMenager instance;
 
-    // public GameState currentGameState = GameState.GS_PAUSEMENU;
+    public GameState currentGameState = GameState.GS_GAME;
     public Image[] keysTab;
 
     public Text scoreText;
+    public string lvnumber = "0";
+    public Text currentscore;
+    public Text bestscore;
+    public Canvas InGameCanvas;
+    public Canvas pauseCanvas;
+    public Canvas victoryCanvas;
     public Text VictoryText;
     public Text message;
     public Text HP;
@@ -36,12 +43,79 @@ public class ScoreMenager : MonoBehaviour
     {
         scoreText.text = score.ToString() + " POINTS";
         HP.text = "x" + life.ToString();
+        currentGameState = GameState.GS_GAME;
+        InGameCanvas.enabled = true;
+        pauseCanvas.enabled = false;
+        victoryCanvas.enabled = false;
+        Time.timeScale = 1;
     }
+    public void unpause()
+    {
 
-   /* void SetGameState(GameState newGameState)
+        InGameCanvas.enabled = true;
+        pauseCanvas
+            .enabled = false;
+        Time.timeScale = 1;
+    }
+    public void MainMenuButtonPressed()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+    public void restart()
+    {
+        SceneManager.LoadScene("Level_1");
+    }
+    void SetGameState(GameState newGameState)
     {
         currentGameState = newGameState;
-    }*/
+        if (newGameState == GameState.GS_GAME)
+            InGame();
+        else 
+            PauseMenu();
+    }
+    public void ReachExit()
+    {
+        if (keysFound == keysTab.Length)
+        {
+           victory();
+            LevelCompleted();
+        }
+        else
+        {
+            youNeedKey();
+        }
+    }
+    public void PauseMenu()
+    {
+        currentGameState = GameState.GS_PAUSEMENU;
+        InGameCanvas.enabled = false;
+        pauseCanvas.enabled = true;
+        Time.timeScale = 0;
+    }
+    public void InGame()
+    {
+        currentGameState = GameState.GS_GAME;
+        InGameCanvas.enabled = true;
+        pauseCanvas
+            .enabled = false;
+        Time.timeScale = 1;
+    }
+    public void LevelCompleted()
+    {
+        currentGameState = GameState.GS_LEVELCOMPLETED;
+        Time.timeScale = 0;
+        InGameCanvas.enabled = false;
+        pauseCanvas.enabled = false;
+        victoryCanvas.enabled = true;
+    }
+    public void GameOver()
+    {
+        currentGameState = GameState.GS_GAME_OVER;
+        Time.timeScale = 0;
+        InGameCanvas.enabled = false;
+        pauseCanvas.enabled = false;
+        victoryCanvas.enabled = true;
+    }
     public void youNeedKey()
     {
         message.enabled = true;
@@ -80,18 +154,42 @@ public class ScoreMenager : MonoBehaviour
     public void victory()
     {
         VictoryText.text = "VICTORY";
-    }
+        if (score > PlayerPrefs.GetInt("score"+lvnumber, 0))
+        PlayerPrefs.SetInt("score"+lvnumber, score);
 
+        currentscore.text = "Score: " + score.ToString();
+        bestscore.text = "Best Score: " + PlayerPrefs.GetInt("score"+lvnumber, 0).ToString();
+    }
+    public void ResetScore()
+    {
+        PlayerPrefs.SetInt("score"+lvnumber, 0);
+        bestscore.text = "Best Score: " + PlayerPrefs.GetInt("score"+lvnumber, 0).ToString();
+    }
     public void death()
     {
+
         VictoryText.text = "GAME OVER";
+        currentscore.text = "Score: " + score.ToString();
+        bestscore.text = "Best Score: " + PlayerPrefs.GetInt("score" + lvnumber, 0).ToString();
+        GameOver();
+
     }
-    // Update is called once per frame
     void Update()
     {
         if (message.enabled && (Time.time >= timeWhenDisappear))
         {
             message.enabled = false;
+        }
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            if(currentGameState == GameState.GS_PAUSEMENU) {
+                SetGameState(GameState.GS_GAME);
+                
+            }
+            else
+            {
+                SetGameState(GameState.GS_PAUSEMENU);
+            }
         }
     }
 }

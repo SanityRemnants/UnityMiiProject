@@ -11,11 +11,12 @@ public class EnemyController : MonoBehaviour
     private float startPositionX;
     public float moveRange = 1.0f;
     private bool isMovingRight = false;
+    private CapsuleCollider2D Enemycollider;
 
 
     private void Start()
     {
-
+        Enemycollider = GetComponent<CapsuleCollider2D>();
     }
 
     private void Update()
@@ -79,14 +80,15 @@ public class EnemyController : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player"))
-        {
-            if (collision.gameObject.transform.position.y > transform.position.y)
+            if (collision.CompareTag("Player"))
             {
-                animator.SetBool("isDead",true);
-                StartCoroutine(KillOnAnimationEnd());
+                if (collision.gameObject.transform.position.y > transform.position.y)
+                {
+                    Enemycollider.enabled = false;
+                    animator.SetBool("isDead", true);
+                    StartCoroutine(KillOnAnimationEnd());
+                }
             }
-        }
     }
 
     private IEnumerator KillOnAnimationEnd()
