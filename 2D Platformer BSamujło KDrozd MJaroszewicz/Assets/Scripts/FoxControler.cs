@@ -11,6 +11,18 @@ public class FoxControler : MonoBehaviour
     private bool isWalking;
     private bool isFacingRight=true;
     private int score = 0;
+    public AudioClip bsound;
+    public AudioClip gsound;
+    public AudioClip vsound;
+    public AudioClip jump_sound;
+    public AudioClip needKey_sound;
+    public AudioClip key_sound;
+    public AudioClip hit_sound;
+    public AudioClip enemyHit_sound;
+    public AudioClip hsound;
+    public AudioClip lost_sound;
+    public AudioClip maintheme;
+    private AudioSource source;
 
     private Vector2 startPosition;
     public const float rayLength = 0.4f;
@@ -66,11 +78,14 @@ public class FoxControler : MonoBehaviour
 
     private void Awake()
     {
+        source = GetComponent<AudioSource>();
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         startPosition = transform.position;
+        source.clip = maintheme;
+        source.Play();
     }
-
+    
     private bool isGrounded()
     {
         return Physics2D.Raycast(this.transform.position, Vector2.down, rayLength, groundLayer.value);
@@ -85,6 +100,7 @@ public class FoxControler : MonoBehaviour
         if (isGrounded())
         {
             rigidBody.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);
+            source.PlayOneShot(jump_sound, AudioListener.volume);
         }
     }
 
@@ -98,16 +114,18 @@ public class FoxControler : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("bonus"))
+        if (other.CompareTag("bonus"))
         {
             score++;
+            source.PlayOneShot(bsound, AudioListener.volume);
             ScoreMenager.instance.addPoint(1);
             Debug.Log("Score: " + score);
             other.gameObject.SetActive(false);
         }
         else if (other.CompareTag("gem"))
         {
-            score+=5;
+            score += 5;
+            source.PlayOneShot(gsound, AudioListener.volume);
             ScoreMenager.instance.addPoint(5);
             Debug.Log("Score: " + score);
             other.gameObject.SetActive(false);
@@ -116,12 +134,21 @@ public class FoxControler : MonoBehaviour
         {
             ScoreMenager.instance.addkey();
             other.gameObject.SetActive(false);
+            source.PlayOneShot(key_sound, AudioListener.volume);
         }
         else if (other.CompareTag("Exit"))
         {
-            ScoreMenager.instance.ReachExit();
-  
-        } else if (other.CompareTag("Enemy"))
+            bool s = ScoreMenager.instance.ReachExit();
+            if (s)
+            {
+                source.clip = null;
+                source.PlayOneShot(vsound, AudioListener.volume);
+            }
+            else
+                source.PlayOneShot(needKey_sound, AudioListener.volume);
+
+        }
+        else if (other.CompareTag("Enemy"))
         {
             if (transform.position.y > other.gameObject.transform.position.y)
             {
@@ -129,21 +156,36 @@ public class FoxControler : MonoBehaviour
                 ScoreMenager.instance.addPoint(3);
                 Debug.Log("Killed an enemy");
                 Debug.Log("Score: " + score);
-            } else
+                source.PlayOneShot(enemyHit_sound, AudioListener.volume);
+            }
+            else
             {
                 transform.position = startPosition;
                 ScoreMenager.instance.subhp();
-                if(ScoreMenager.instance.life == 0)
+                if (ScoreMenager.instance.life == 0)
                 {
+                    source.clip = null;
+                    source.PlayOneShot(lost_sound, AudioListener.volume*2);
+                    
                     Death();
+
                 }
+                else
+                    source.PlayOneShot(hit_sound, AudioListener.volume);
             }
-        } else if (other.CompareTag("Live"))
+        }
+        else if (other.CompareTag("Live"))
         {
             ScoreMenager.instance.addhp();
             other.gameObject.SetActive(false);
-        } else if (other.CompareTag("Death"))
-                Death();
+            source.PlayOneShot(hsound, AudioListener.volume);
+        }
+        else if (other.CompareTag("Death"))
+        {
+            source.clip = null;
+           source.PlayOneShot(lost_sound, AudioListener.volume*2);
+            Death();
+        }
 
     }
     private void Death()

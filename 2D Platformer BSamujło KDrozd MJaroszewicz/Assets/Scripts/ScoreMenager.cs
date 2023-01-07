@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.SceneManagement;
 
 
-public enum GameState { GS_PAUSEMENU, GS_GAME, GS_LEVELCOMPLETED, GS_GAME_OVER }
+public enum GameState { GS_PAUSEMENU, GS_GAME, GS_LEVELCOMPLETED, GS_GAME_OVER, GS_OPTIONS }
 
 public class ScoreMenager : MonoBehaviour
 {
@@ -18,9 +19,11 @@ public class ScoreMenager : MonoBehaviour
     public string lvnumber = "0";
     public Text currentscore;
     public Text bestscore;
+    public TextMeshProUGUI currentQuality;
     public Canvas InGameCanvas;
     public Canvas pauseCanvas;
     public Canvas victoryCanvas;
+    public Canvas optionsCanvas;
     public Text VictoryText;
     public Text message;
     public Text HP;
@@ -29,6 +32,7 @@ public class ScoreMenager : MonoBehaviour
     public int life = 3;
     private float timeToAppear = 2f;
     private float timeWhenDisappear;
+
     // Start is called before the first frame update
 
     private void Awake()
@@ -41,21 +45,42 @@ public class ScoreMenager : MonoBehaviour
     }
     void Start()
     {
+
         scoreText.text = score.ToString() + " POINTS";
         HP.text = "x" + life.ToString();
         currentGameState = GameState.GS_GAME;
         InGameCanvas.enabled = true;
         pauseCanvas.enabled = false;
+        optionsCanvas.enabled = false;
         victoryCanvas.enabled = false;
         Time.timeScale = 1;
     }
     public void unpause()
     {
-
+        currentGameState = GameState.GS_GAME;
         InGameCanvas.enabled = true;
         pauseCanvas
             .enabled = false;
         Time.timeScale = 1;
+    }
+    public void SetVolume(float Value)
+    {
+        AudioListener.volume = Value;
+    }
+    public void quality_inc()
+    {
+        if (QualitySettings.names[QualitySettings.GetQualityLevel()] != QualitySettings.names[QualitySettings.names.Length-1])
+            QualitySettings.IncreaseLevel();
+        currentQuality.text = "Quality: " + QualitySettings.names[QualitySettings.GetQualityLevel()];
+        Debug.Log(QualitySettings.names[QualitySettings.GetQualityLevel()]);
+    }
+    public void quality_dec()
+    {
+        if(QualitySettings.names[QualitySettings.GetQualityLevel()]!= QualitySettings.names[0])
+        QualitySettings.DecreaseLevel();
+        currentQuality.text = "Quality: " + QualitySettings.names[QualitySettings.GetQualityLevel()];
+        Debug.Log(QualitySettings.names[QualitySettings.GetQualityLevel()]);
+
     }
     public void MainMenuButtonPressed()
     {
@@ -73,21 +98,33 @@ public class ScoreMenager : MonoBehaviour
         else 
             PauseMenu();
     }
-    public void ReachExit()
+    public bool ReachExit()
     {
         if (keysFound == keysTab.Length)
         {
            victory();
             LevelCompleted();
+            return true;
         }
         else
         {
             youNeedKey();
+            return false;
         }
+    }
+    public void options()
+    {
+        currentQuality.text = "Quality: " + QualitySettings.names[QualitySettings.GetQualityLevel()];
+        currentGameState = GameState.GS_OPTIONS;
+        pauseCanvas.enabled = false;
+        optionsCanvas.enabled = true;
+        Time.timeScale = 0;
     }
     public void PauseMenu()
     {
+
         currentGameState = GameState.GS_PAUSEMENU;
+        optionsCanvas.enabled = false;
         InGameCanvas.enabled = false;
         pauseCanvas.enabled = true;
         Time.timeScale = 0;
@@ -136,15 +173,6 @@ public class ScoreMenager : MonoBehaviour
     {
         keysFound += 1;
         keysTab[keysFound - 1].color = Color.white;
-    }
-    public int checkKeys()
-    {
-        return keysFound;
-    }
-    public void hpUpdate(int a)
-    {
-        life = a;
-        HP.text = "x" + life.ToString();
     }
     public void subhp()
     {
