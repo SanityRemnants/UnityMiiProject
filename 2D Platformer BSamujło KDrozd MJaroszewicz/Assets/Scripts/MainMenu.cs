@@ -21,6 +21,12 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Level_1");
     }
+
+    public void OnLevel2ButtonPressed()
+    {
+        SceneManager.LoadScene("Level_2");
+    }
+
     public void ResetScoreForLv(string lv)
     {
         PlayerPrefs.SetInt("score"+lv, 0);

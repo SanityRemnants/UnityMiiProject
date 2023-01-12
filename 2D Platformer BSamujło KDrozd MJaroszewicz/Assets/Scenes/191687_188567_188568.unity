@@ -89847,11 +89847,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46203cad95c8d0d43b0f820530a60c01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentGameState: 1
   keysTab:
   - {fileID: 649208019}
   - {fileID: 46609282}
   - {fileID: 1293505499}
   scoreText: {fileID: 315108591}
+  lvnumber: 0
+  currentscore: {fileID: 0}
+  bestscore: {fileID: 0}
+  currentQuality: {fileID: 0}
+  InGameCanvas: {fileID: 0}
+  pauseCanvas: {fileID: 0}
+  victoryCanvas: {fileID: 0}
+  optionsCanvas: {fileID: 0}
   VictoryText: {fileID: 206545728}
   message: {fileID: 2007527143}
   HP: {fileID: 937773742}
@@ -92926,6 +92935,7 @@ GameObject:
   - component: {fileID: 1889597202}
   - component: {fileID: 1889597203}
   - component: {fileID: 1889597204}
+  - component: {fileID: 1889597205}
   m_Layer: 0
   m_Name: Fox
   m_TagString: Player
@@ -93050,6 +93060,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
+  bsound: {fileID: 8300000, guid: 66852431e1babd74b828f9b901e038be, type: 3}
+  gsound: {fileID: 8300000, guid: 47a9ebc0dd5350240bbbdd06beaad05d, type: 3}
+  vsound: {fileID: 8300000, guid: 66852431e1babd74b828f9b901e038be, type: 3}
+  jump_sound: {fileID: 8300000, guid: 9b8ceef51d316ae4bb14781bea2bc738, type: 3}
+  needKey_sound: {fileID: 8300000, guid: f05206903c6c9f9468fd064aa38a7e8b, type: 3}
+  key_sound: {fileID: 8300000, guid: f05206903c6c9f9468fd064aa38a7e8b, type: 3}
+  hit_sound: {fileID: 8300000, guid: fd38fe302db84034fad5daa4a037d679, type: 3}
+  enemyHit_sound: {fileID: 8300000, guid: fd38fe302db84034fad5daa4a037d679, type: 3}
+  hsound: {fileID: 8300000, guid: a2ae90e42daaf4723a539c25867d37fd, type: 3}
+  lost_sound: {fileID: 8300000, guid: 47a9ebc0dd5350240bbbdd06beaad05d, type: 3}
+  maintheme: {fileID: 8300000, guid: bef0cef2ded0f0645ad90c6e5bdd4965, type: 3}
   jumpforce: 6
   groundLayer:
     serializedVersion: 2
@@ -93074,6 +93095,102 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!82 &1889597205
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889597198}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &1892926802 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6475060968925758944, guid: 6eb26473e0921394783bf94bfd3acfd7, type: 3}

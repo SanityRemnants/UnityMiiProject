@@ -96125,7 +96125,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1889597198}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.6, y: -5.96, z: 0}
+  m_LocalPosition: {x: 17.34, y: -6.25, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -96193,6 +96193,7 @@ MonoBehaviour:
   hsound: {fileID: 8300000, guid: a2ae90e42daaf4723a539c25867d37fd, type: 3}
   lost_sound: {fileID: 8300000, guid: 47a9ebc0dd5350240bbbdd06beaad05d, type: 3}
   maintheme: {fileID: 8300000, guid: bef0cef2ded0f0645ad90c6e5bdd4965, type: 3}
+  rayLength: 0.4
   jumpforce: 6
   groundLayer:
     serializedVersion: 2

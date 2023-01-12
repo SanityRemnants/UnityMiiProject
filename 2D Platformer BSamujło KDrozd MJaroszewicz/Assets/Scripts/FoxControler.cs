@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 
 public class FoxControler : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class FoxControler : MonoBehaviour
     private AudioSource source;
 
     private Vector2 startPosition;
-    public const float rayLength = 0.4f;
+    public float rayLength = 1.0f;
     public float jumpforce = 5.0f;
     public LayerMask groundLayer;
 
