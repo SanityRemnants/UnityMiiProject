@@ -84,6 +84,7 @@ public class FoxControler : MonoBehaviour
         animator = GetComponent<Animator>();
         startPosition = transform.position;
         source.clip = maintheme;
+        source.volume = 0.03f;
         source.Play();
     }
     
