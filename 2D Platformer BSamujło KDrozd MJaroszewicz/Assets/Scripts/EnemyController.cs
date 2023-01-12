@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour
     public float moveRange = 1.0f;
     private bool isMovingRight = false;
     private CapsuleCollider2D Enemycollider;
+    public GameObject kill;
 
 
     private void Start()
@@ -89,7 +90,7 @@ public class EnemyController : MonoBehaviour
     {
             if (collision.CompareTag("Player"))
             {
-                if (collision.gameObject.transform.position.y > transform.position.y)
+                if (collision.gameObject.transform.position.y > kill.transform.position.y)
                 {
                     isAlive = false;
                     Enemycollider.enabled = false;

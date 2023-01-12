@@ -147,7 +147,6 @@ public class ScoreMenager : MonoBehaviour
     public void LevelCompleted()
     {
         currentGameState = GameState.GS_LEVELCOMPLETED;
-        victoryText.text = "VICTORY";
         Time.timeScale = 0;
         InGameCanvas.enabled = false;
         pauseCanvas.enabled = false;
@@ -205,6 +204,7 @@ public class ScoreMenager : MonoBehaviour
     {
 
         VictoryText.text = "GAME OVER";
+        victoryText.fontSize = 20;
         currentscore.text = "Score: " + score.ToString();
         bestscore.text = "Best Score: " + PlayerPrefs.GetInt("score" + lvnumber, 0).ToString();
         GameOver();
