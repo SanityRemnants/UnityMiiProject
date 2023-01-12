@@ -95626,14 +95626,6 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1582322348}
     m_Modifications:
-    - target: {fileID: 3484858663901608816, guid: 6eb26473e0921394783bf94bfd3acfd7, type: 3}
-      propertyPath: m_Radius
-      value: 0.10724305
-      objectReference: {fileID: 0}
-    - target: {fileID: 3484858663901608816, guid: 6eb26473e0921394783bf94bfd3acfd7, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.03570477
-      objectReference: {fileID: 0}
     - target: {fileID: 6475060968925758944, guid: 6eb26473e0921394783bf94bfd3acfd7, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -96200,11 +96192,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1889597198}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-<<<<<<< Updated upstream
-  m_LocalPosition: {x: 16.3, y: -4.58, z: 0}
-=======
-  m_LocalPosition: {x: 17.237, y: -6.242, z: 0}
->>>>>>> Stashed changes
+  m_LocalPosition: {x: 17.34, y: -6.25, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -96933,18 +96921,6 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1582322348}
     m_Modifications:
-    - target: {fileID: 3484858663901608816, guid: 6eb26473e0921394783bf94bfd3acfd7, type: 3}
-      propertyPath: m_Radius
-      value: 0.098315656
-      objectReference: {fileID: 0}
-    - target: {fileID: 3484858663901608816, guid: 6eb26473e0921394783bf94bfd3acfd7, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.020828035
-      objectReference: {fileID: 0}
-    - target: {fileID: 3484858663901608816, guid: 6eb26473e0921394783bf94bfd3acfd7, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.0059509524
-      objectReference: {fileID: 0}
     - target: {fileID: 6475060968925758944, guid: 6eb26473e0921394783bf94bfd3acfd7, type: 3}
       propertyPath: m_RootOrder
       value: -1
