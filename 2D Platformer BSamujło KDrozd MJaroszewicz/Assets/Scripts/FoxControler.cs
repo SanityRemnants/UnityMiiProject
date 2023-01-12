@@ -141,9 +141,10 @@ public class FoxControler : MonoBehaviour
         }
         else if (other.CompareTag("Key"))
         {
+           // startPosition = other.transform.position;
             ScoreMenager.instance.addkey();
             other.gameObject.SetActive(false);
-            source.PlayOneShot(key_sound, AudioListener.volume);
+            source.PlayOneShot(key_sound, AudioListener.volume);        
         }
         else if (other.CompareTag("Exit"))
         {
