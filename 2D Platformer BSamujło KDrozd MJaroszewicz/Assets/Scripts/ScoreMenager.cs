@@ -15,6 +15,7 @@ public class ScoreMenager : MonoBehaviour
     public GameState currentGameState = GameState.GS_GAME;
     public Image[] keysTab;
 
+    public Text victoryText;
     public Text scoreText;
     public string lvnumber = "0";
     public Text currentscore;
@@ -146,6 +147,7 @@ public class ScoreMenager : MonoBehaviour
     public void LevelCompleted()
     {
         currentGameState = GameState.GS_LEVELCOMPLETED;
+        victoryText.text = "VICTORY";
         Time.timeScale = 0;
         InGameCanvas.enabled = false;
         pauseCanvas.enabled = false;
