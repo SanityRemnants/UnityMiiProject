@@ -7,8 +7,9 @@ public class EnemyController : MonoBehaviour
 {
     [Range(0.01f, 20)][SerializeField] private float moveSpeed = 0.1f;
     private Animator animator;
-    private bool isFacingRight = false;
+    private bool isFacingRight = true;
     private float startPositionX;
+    private bool isAlive = true;
     public float moveRange = 1.0f;
     private bool isMovingRight = false;
     private CapsuleCollider2D Enemycollider;
@@ -21,28 +22,31 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        if (isMovingRight)
+        if (isAlive)
         {
-            if (this.transform.position.x <= startPositionX + moveRange)
+            if (isMovingRight)
             {
-                MoveRight();
+                if (this.transform.position.x <= startPositionX + moveRange)
+                {
+                    MoveRight();
+                }
+                else
+                {
+                    isMovingRight = false;
+                    MoveLeft();
+                }
             }
             else
             {
-                isMovingRight = false;
-                MoveLeft();
-            }
-        }
-        else
-        {
-            if (this.transform.position.x >= startPositionX - moveRange)
-            {
-                MoveLeft();
-            }
-            else
-            {
-                isMovingRight = true;
-                MoveRight();
+                if (this.transform.position.x >= startPositionX - moveRange)
+                {
+                    MoveLeft();
+                }
+                else
+                {
+                    isMovingRight = true;
+                    MoveRight();
+                }
             }
         }
     }
@@ -55,10 +59,13 @@ public class EnemyController : MonoBehaviour
 
     private void flip()
     {
-        isFacingRight = !isFacingRight;
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
+        if (isAlive)
+        {
+            isFacingRight = !isFacingRight;
+            Vector3 theScale = transform.localScale;
+            theScale.x *= -1;
+            transform.localScale = theScale;
+        }
     }
 
     private void MoveRight()
@@ -84,6 +91,7 @@ public class EnemyController : MonoBehaviour
             {
                 if (collision.gameObject.transform.position.y > transform.position.y)
                 {
+                    isAlive = false;
                     Enemycollider.enabled = false;
                     animator.SetBool("isDead", true);
                     StartCoroutine(KillOnAnimationEnd());
@@ -93,7 +101,7 @@ public class EnemyController : MonoBehaviour
 
     private IEnumerator KillOnAnimationEnd()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         gameObject.SetActive(false);
     }
 }
