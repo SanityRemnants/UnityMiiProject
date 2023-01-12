@@ -1548,6 +1548,7 @@ MonoBehaviour:
   hsound: {fileID: 8300000, guid: a2ae90e42daaf4723a539c25867d37fd, type: 3}
   lost_sound: {fileID: 8300000, guid: 47a9ebc0dd5350240bbbdd06beaad05d, type: 3}
   maintheme: {fileID: 8300000, guid: bef0cef2ded0f0645ad90c6e5bdd4965, type: 3}
+  fallthrough: 0
   rayLength: 1
   jumpforce: 6
   groundLayer:

@@ -24,7 +24,7 @@ public class FoxControler : MonoBehaviour
     public AudioClip lost_sound;
     public AudioClip maintheme;
     private AudioSource source;
-
+    public bool fallthrough = false;
     private Vector2 startPosition;
     public float rayLength = 1.0f;
     public float jumpforce = 5.0f;
@@ -59,9 +59,16 @@ public class FoxControler : MonoBehaviour
                         flip();
                     }
                 }
-                if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
                 {
                     jump();
+                }
+                if ( Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+                {
+                    fallthrough = true;
+                }else
+                {
+                    fallthrough = false;
                 }
                 animator.SetBool("isWalking", isWalking);
                 if (!isGrounded())
