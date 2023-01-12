@@ -59,7 +59,7 @@ public class FoxControler : MonoBehaviour
                         flip();
                     }
                 }
-                if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+                if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
                 {
                     jump();
                 }
@@ -191,9 +191,18 @@ public class FoxControler : MonoBehaviour
         }
         else if (other.CompareTag("Death"))
         {
-            source.clip = null;
-           source.PlayOneShot(lost_sound, AudioListener.volume*2);
-            Death();
+            transform.position = startPosition;
+            ScoreMenager.instance.subhp();
+            if (ScoreMenager.instance.life == 0)
+            {
+                source.clip = null;
+                source.PlayOneShot(lost_sound, AudioListener.volume * 2);
+
+                Death();
+
+            }
+            else
+                source.PlayOneShot(hit_sound, AudioListener.volume);
         }
 
     }

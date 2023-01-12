@@ -59,7 +59,10 @@ public class PlatformFall : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        touched = true;
+        if (collision.collider.CompareTag("Player"))
+        {
+            touched = true;
+        }
     }
     private void Awake()
     {
