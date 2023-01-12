@@ -112,6 +112,12 @@ public class ScoreMenager : MonoBehaviour
             return false;
         }
     }
+    public void ReachRespawn()
+    {
+        message.enabled = true;
+        message.text = "You reach checkpoint!";
+        timeWhenDisappear = Time.time + timeToAppear;
+    }
     public void options()
     {
         currentQuality.text = "Quality: " + QualitySettings.names[QualitySettings.GetQualityLevel()];

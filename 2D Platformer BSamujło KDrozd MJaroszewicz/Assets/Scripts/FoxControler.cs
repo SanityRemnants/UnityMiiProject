@@ -158,6 +158,17 @@ public class FoxControler : MonoBehaviour
                 source.PlayOneShot(needKey_sound, AudioListener.volume);
 
         }
+        else if (other.CompareTag("Respawn"))
+        {
+            if ((startPosition.x != other.gameObject.transform.position.x) && (startPosition.y != other.gameObject.transform.position.y))
+            {
+                ScoreMenager.instance.ReachRespawn();
+                startPosition = other.gameObject.transform.position;
+
+                source.PlayOneShot(key_sound, AudioListener.volume);
+            }
+
+        }
         else if (other.CompareTag("Enemy"))
         {
             if (transform.position.y > other.gameObject.transform.position.y)
@@ -184,6 +195,7 @@ public class FoxControler : MonoBehaviour
                     source.PlayOneShot(hit_sound, AudioListener.volume);
             }
         }
+
         else if (other.CompareTag("Live"))
         {
             ScoreMenager.instance.addhp();
