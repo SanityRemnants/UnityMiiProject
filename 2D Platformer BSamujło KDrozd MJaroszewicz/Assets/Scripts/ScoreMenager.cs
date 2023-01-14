@@ -20,7 +20,7 @@ public class ScoreMenager : MonoBehaviour
     public string lvnumber = "0";
     public Text currentscore;
     public Text bestscore;
-    public TextMeshProUGUI currentQuality;
+    public Text currentQuality;
     public Canvas InGameCanvas;
     public Canvas pauseCanvas;
     public Canvas victoryCanvas;

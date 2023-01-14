@@ -78,8 +78,11 @@ public class FoxControler : MonoBehaviour
                 }
                 else
                 {
+                if (rigidBody.velocity.y == 0)
                     animator.SetBool("isGrounded", true);
-                }
+                else
+                    animator.SetBool("isFalling", isFalling());
+            }
                 //Debug.DrawRay(transform.position, rayLength*Vector3.down, Color.white, 1, false);
         }
     }
@@ -91,13 +94,16 @@ public class FoxControler : MonoBehaviour
         animator = GetComponent<Animator>();
         startPosition = transform.position;
         source.clip = maintheme;
-        source.volume = 0.5f;
+        source.volume = 0.1f;
         source.Play();
     }
     
     private bool isGrounded()
     {
-        return Physics2D.Raycast(this.transform.position, Vector2.down, rayLength, groundLayer.value);
+        
+            return Physics2D.Raycast(this.transform.position, Vector2.down, rayLength, groundLayer.value);
+
+
     }
     private bool isFalling()
     {
@@ -106,7 +112,8 @@ public class FoxControler : MonoBehaviour
 
     private void jump()
     {
-        if (isGrounded())
+        if (rigidBody.velocity.y == 0)
+            if (isGrounded())
         {
             rigidBody.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);
             source.PlayOneShot(jump_sound, AudioListener.volume);
