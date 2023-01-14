@@ -59,7 +59,7 @@ public class FoxControler : MonoBehaviour
                         flip();
                     }
                 }
-                if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+                if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
                 {
                     jump();
                 }
@@ -78,10 +78,8 @@ public class FoxControler : MonoBehaviour
                 }
                 else
                 {
-                if (rigidBody.velocity.y == 0)
                     animator.SetBool("isGrounded", true);
-                else
-                    animator.SetBool("isFalling", isFalling());
+                
             }
                 //Debug.DrawRay(transform.position, rayLength*Vector3.down, Color.white, 1, false);
         }

@@ -318,7 +318,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3322971351330806284, guid: ad73dcd8f91b72141a07189cfef7a6ef, type: 3}
       propertyPath: m_Text
-      value: Level 2
+      value: Options
       objectReference: {fileID: 0}
     - target: {fileID: 3900090113801962080, guid: ad73dcd8f91b72141a07189cfef7a6ef, type: 3}
       propertyPath: m_Name
@@ -489,7 +489,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1f2ad53bacc245642854dbdc8ea71a9b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.298
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -670,7 +670,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Pingwin
+  m_Text: Penguin
 --- !u!224 &969290506 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3900090113801962083, guid: ad73dcd8f91b72141a07189cfef7a6ef, type: 3}
