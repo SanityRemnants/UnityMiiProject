@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7029563376672359440}
   - component: {fileID: 7029563376672359443}
   - component: {fileID: 9189407611666672741}
+  - component: {fileID: 3741715936285992599}
   m_Layer: 3
   m_Name: Fall platform
   m_TagString: Untagged
@@ -168,3 +169,15 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &3741715936285992599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7029563376672359442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8318c49cbe72cb94aaed40b0045d17e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

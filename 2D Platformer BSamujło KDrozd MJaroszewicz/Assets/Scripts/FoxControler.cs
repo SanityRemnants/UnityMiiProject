@@ -112,8 +112,7 @@ public class FoxControler : MonoBehaviour
 
     private void jump()
     {
-        if (rigidBody.velocity.y == 0)
-            if (isGrounded())
+        if (rigidBody.velocity.y == 0&&isGrounded())
         {
             rigidBody.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);
             source.PlayOneShot(jump_sound, AudioListener.volume);
