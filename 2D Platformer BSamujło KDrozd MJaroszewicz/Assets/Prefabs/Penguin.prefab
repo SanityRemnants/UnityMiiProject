@@ -156,6 +156,9 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  platformLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!95 &205286688171036729
 Animator:
   serializedVersion: 4

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7029563376672359443}
   - component: {fileID: 9189407611666672741}
   - component: {fileID: 3741715936285992599}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Fall platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}

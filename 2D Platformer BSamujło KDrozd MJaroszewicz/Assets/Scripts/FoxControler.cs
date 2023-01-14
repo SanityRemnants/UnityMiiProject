@@ -29,7 +29,7 @@ public class FoxControler : MonoBehaviour
     public float rayLength = 1.0f;
     public float jumpforce = 5.0f;
     public LayerMask groundLayer;
-
+    public LayerMask platformLayer;
 
     private void Start()
     {
@@ -100,8 +100,12 @@ public class FoxControler : MonoBehaviour
     
     private bool isGrounded()
     {
-        
-            return Physics2D.Raycast(this.transform.position, Vector2.down, rayLength, groundLayer.value);
+        bool is_grounded = Physics2D.Raycast(this.transform.position, Vector2.down, rayLength, groundLayer.value);
+        if(!is_grounded)
+        {
+            is_grounded = Physics2D.Raycast(this.transform.position, Vector2.down, rayLength, platformLayer.value)&&rigidBody.velocity.y==0;
+        }
+        return is_grounded;
 
 
     }
@@ -112,7 +116,7 @@ public class FoxControler : MonoBehaviour
 
     private void jump()
     {
-        if (rigidBody.velocity.y == 0&&isGrounded())
+        if (isGrounded())
         {
             rigidBody.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);
             source.PlayOneShot(jump_sound, AudioListener.volume);
