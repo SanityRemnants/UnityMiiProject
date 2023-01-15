@@ -97,7 +97,7 @@ public class EnemyController : MonoBehaviour
                 //Debug.Log("Killed an enemy");
                 source.PlayOneShot(enemyHit_sound, AudioListener.volume);
             
-            isAlive = false;
+                isAlive = false;
                     Enemycollider.enabled = false;
                     animator.SetBool("isDead", true);
                     StartCoroutine(KillOnAnimationEnd());
