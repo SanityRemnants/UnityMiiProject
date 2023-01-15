@@ -11,6 +11,7 @@ TagManager:
   - Exit
   - Death
   - gem
+  - attack
   layers:
   - Default
   - TransparentFX
@@ -19,8 +20,8 @@ TagManager:
   - Water
   - UI
   - Platform
-  - 
-  - 
+  - attack
+  - enemy
   - 
   - 
   - 

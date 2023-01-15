@@ -30,6 +30,8 @@ public class FoxControler : MonoBehaviour
     public float jumpforce = 5.0f;
     public LayerMask groundLayer;
     public LayerMask platformLayer;
+    public GameObject attack;
+    private BoxCollider2D attackCollider;
 
     private void Start()
     {
@@ -50,6 +52,12 @@ public class FoxControler : MonoBehaviour
                         flip();
                     }
                 }
+                if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
+                {
+                attack.SetActive(true);
+                StartCoroutine(attackoff());
+                
+                 }
                 if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
                 {
                     isWalking = true;
@@ -87,6 +95,7 @@ public class FoxControler : MonoBehaviour
 
     private void Awake()
     {
+        attackCollider = attack.GetComponent<BoxCollider2D>();
         source = GetComponent<AudioSource>();
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -95,7 +104,11 @@ public class FoxControler : MonoBehaviour
         source.volume = 0.1f;
         source.Play();
     }
-    
+    private IEnumerator attackoff()
+    {
+        yield return new WaitForSeconds(0.5f);
+        attack.SetActive(false);
+    }
     private bool isGrounded()
     {
         bool is_grounded = Physics2D.Raycast(this.transform.position, Vector2.down, rayLength, groundLayer.value);
@@ -189,18 +202,22 @@ public class FoxControler : MonoBehaviour
             }
             else
             {
-                transform.position = startPosition;
+                
                 ScoreMenager.instance.subhp();
                 if (ScoreMenager.instance.life == 0)
                 {
                     source.clip = null;
-                    source.PlayOneShot(lost_sound, AudioListener.volume*2);
-                    
+                    source.PlayOneShot(lost_sound, AudioListener.volume * 2);
+
                     Death();
+                    
 
                 }
                 else
+                {
                     source.PlayOneShot(hit_sound, AudioListener.volume);
+                    transform.position = startPosition;
+                }
             }
         }
 
@@ -212,7 +229,7 @@ public class FoxControler : MonoBehaviour
         }
         else if (other.CompareTag("Death"))
         {
-            transform.position = startPosition;
+            
             ScoreMenager.instance.subhp();
             if (ScoreMenager.instance.life == 0)
             {
@@ -223,7 +240,10 @@ public class FoxControler : MonoBehaviour
 
             }
             else
+            {
                 source.PlayOneShot(hit_sound, AudioListener.volume);
+                transform.position = startPosition;
+            }
         }
 
     }
