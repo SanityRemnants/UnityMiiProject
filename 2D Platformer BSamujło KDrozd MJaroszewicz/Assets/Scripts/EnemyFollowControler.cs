@@ -28,18 +28,19 @@ public class EnemyFollowControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {  
-
+    
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("attack"))
+       if (collision.CompareTag("attack"))
         {
             ScoreMenager.instance.addPoint(3);
-            source.PlayOneShot(enemyHit_sound, AudioListener.volume);
+            //source.PlayOneShot(enemyHit_sound, AudioListener.volume);
             Enemycollider.enabled = false;
             destinationSetter.enabled = false;
             //animator.SetBool("isDead", true);
             StartCoroutine(KillOnAnimationEnd());
+
         }else if(collision.CompareTag("Player"))
         {
             destinationSetter.enabled = false;
