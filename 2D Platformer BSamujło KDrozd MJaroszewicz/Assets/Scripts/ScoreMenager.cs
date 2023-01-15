@@ -35,6 +35,7 @@ public class ScoreMenager : MonoBehaviour
     public int life = 3;
     private float timeToAppear = 2f;
     private float timeWhenDisappear;
+    private bool playerAlive = true;
 
     // Start is called before the first frame update
 
@@ -70,6 +71,14 @@ public class ScoreMenager : MonoBehaviour
     {
         AudioListener.volume = Value;
     }
+    public bool CheckIfPlayerAlive()
+    {
+        return playerAlive;
+    }
+    public void SetPlayerAlive(bool state)
+    {
+        playerAlive = state;
+    }
     public void quality_inc()
     {
         if (QualitySettings.names[QualitySettings.GetQualityLevel()] != QualitySettings.names[QualitySettings.names.Length-1])
@@ -91,7 +100,8 @@ public class ScoreMenager : MonoBehaviour
     }
     public void restart()
     {
-        SceneManager.LoadScene("Level_1");
+
+        SceneManager.LoadScene("Level_"+lvnumber.ToString());
     }
     void SetGameState(GameState newGameState)
     {

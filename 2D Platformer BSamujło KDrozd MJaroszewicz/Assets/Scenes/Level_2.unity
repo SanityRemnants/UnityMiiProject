@@ -11182,7 +11182,7 @@ MonoBehaviour:
   - {fileID: 1050508714}
   victoryText: {fileID: 997866139}
   scoreText: {fileID: 141906639}
-  lvnumber: 1
+  lvnumber: 2
   currentscore: {fileID: 2080017359}
   bestscore: {fileID: 638429517}
   cooldown: {fileID: 2050338057}

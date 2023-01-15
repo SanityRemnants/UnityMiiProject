@@ -249,6 +249,7 @@ public class FoxControler : MonoBehaviour
     }
     private void Death()
     {
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
         ScoreMenager.instance.death();
     }
 }

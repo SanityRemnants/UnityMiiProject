@@ -4857,9 +4857,9 @@ RectTransform:
   m_Father: {fileID: 745784043}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -102.08716, y: 191}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 502, y: -109}
   m_SizeDelta: {x: 503.2478, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &572671675
@@ -29850,22 +29850,6 @@ PrefabInstance:
     - target: {fileID: 3801343841993765969, guid: 6ee8b1e04b0a4194fabb0177606ab981, type: 3}
       propertyPath: m_TagString
       value: attack
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609915520316316899, guid: 6ee8b1e04b0a4194fabb0177606ab981, type: 3}
-      propertyPath: m_Size.x
-      value: 16.2524
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609915520316316899, guid: 6ee8b1e04b0a4194fabb0177606ab981, type: 3}
-      propertyPath: m_Size.y
-      value: 11.754803
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609915520316316899, guid: 6ee8b1e04b0a4194fabb0177606ab981, type: 3}
-      propertyPath: m_Offset.x
-      value: 7.808836
-      objectReference: {fileID: 0}
-    - target: {fileID: 8609915520316316899, guid: 6ee8b1e04b0a4194fabb0177606ab981, type: 3}
-      propertyPath: m_Offset.y
-      value: 4.909477
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2073968968319971531, guid: 6ee8b1e04b0a4194fabb0177606ab981, type: 3}

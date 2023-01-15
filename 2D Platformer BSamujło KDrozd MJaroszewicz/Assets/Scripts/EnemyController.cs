@@ -94,7 +94,6 @@ public class EnemyController : MonoBehaviour
             if (collision.CompareTag("attack"))
             {
                 ScoreMenager.instance.addPoint(3);
-                //Debug.Log("Killed an enemy");
                 source.PlayOneShot(enemyHit_sound, AudioListener.volume);
             
                 isAlive = false;
