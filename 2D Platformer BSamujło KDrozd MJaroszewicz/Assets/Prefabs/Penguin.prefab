@@ -143,6 +143,7 @@ MonoBehaviour:
   bsound: {fileID: 8300000, guid: 66852431e1babd74b828f9b901e038be, type: 3}
   gsound: {fileID: 8300000, guid: ceede7a829d41470a86526620500b878, type: 3}
   vsound: {fileID: 8300000, guid: a50b656c6f2fa3e42994cd0909d91faf, type: 3}
+  attack_sound: {fileID: 8300000, guid: bb6cdd13aeb95f743847b1cd460889bc, type: 3}
   jump_sound: {fileID: 8300000, guid: 9b8ceef51d316ae4bb14781bea2bc738, type: 3}
   needKey_sound: {fileID: 8300000, guid: fd38fe302db84034fad5daa4a037d679, type: 3}
   key_sound: {fileID: 8300000, guid: f05206903c6c9f9468fd064aa38a7e8b, type: 3}
@@ -398,7 +399,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.29982758, y: -0.064992905}
+  m_Offset: {x: 0.33669853, y: -0.15716934}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -409,5 +410,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2343826, y: 1.715847}
+  m_Size: {x: 1.5293465, y: 2.1214218}
   m_EdgeRadius: 0

@@ -209,6 +209,7 @@ public class ScoreMenager : MonoBehaviour
     {
         life -= 1;
         HP.text = "x" + life.ToString();
+        SetPlayerAlive(false);
     }
     public void victory()
     {

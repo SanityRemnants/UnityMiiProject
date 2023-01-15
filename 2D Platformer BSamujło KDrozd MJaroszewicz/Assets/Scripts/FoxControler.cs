@@ -14,6 +14,7 @@ public class FoxControler : MonoBehaviour
     public AudioClip bsound;
     public AudioClip gsound;
     public AudioClip vsound;
+    public AudioClip attack_sound;
     public AudioClip jump_sound;
     public AudioClip needKey_sound;
     public AudioClip key_sound;
@@ -51,28 +52,43 @@ public class FoxControler : MonoBehaviour
         ScoreMenager.instance.setCooldown(cooldown);
         isWalking = false;
         if (ScoreMenager.instance.currentGameState == GameState.GS_GAME)
-        {       
-                if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        {
+            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+            {
+                if (!ScoreMenager.instance.CheckIfPlayerAlive())
                 {
-                    isWalking = true;
-                    transform.Translate(moveSpeed * Time.deltaTime, 0.0f, 0.0f, Space.World);
-                    if (!isFacingRight)
-                    {
-                        flip();
-                    }
+                    ScoreMenager.instance.SetPlayerAlive(true);
+                    gameObject.GetComponent<SpriteRenderer>().color = Color.white;
                 }
+                isWalking = true;
+                transform.Translate(moveSpeed * Time.deltaTime, 0.0f, 0.0f, Space.World);
+                if (!isFacingRight)
+                {
+                    flip();
+                }
+            }
+            else
+            {
+                mainCollider.enabled = true;
+            }
                 if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
                 {
-                if (cooldown<=0)
+                if ((cooldown<=0)&&(ScoreMenager.instance.CheckIfPlayerAlive()))
                 {
                     attack.SetActive(true);
                     StartCoroutine(attackoff());
+                    source.PlayOneShot(attack_sound, AudioListener.volume*2);
                 }
                 
                  }
                 if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
                 {
-                    isWalking = true;
+                if (!ScoreMenager.instance.CheckIfPlayerAlive())
+                {
+                    ScoreMenager.instance.SetPlayerAlive(true);
+                    gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+                }
+                isWalking = true;
                     transform.Translate(-moveSpeed * Time.deltaTime, 0.0f, 0.0f, Space.World);
                     if (isFacingRight)
                     {
@@ -82,7 +98,12 @@ public class FoxControler : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
                 {
                     jump();
+                if (!ScoreMenager.instance.CheckIfPlayerAlive())
+                {
+                    ScoreMenager.instance.SetPlayerAlive(true);
+                    gameObject.GetComponent<SpriteRenderer>().color = Color.white;
                 }
+            }
                 if ( Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
                 {
                     fallthrough = true;
@@ -203,6 +224,8 @@ public class FoxControler : MonoBehaviour
         {
             if (mainCollider.IsTouching(other))  { 
                 ScoreMenager.instance.subhp();
+                gameObject.GetComponent<SpriteRenderer>().color = Color.gray;
+                mainCollider.enabled = false;
                 if (ScoreMenager.instance.life == 0)
                 {
                     source.clip = null;
@@ -231,6 +254,7 @@ public class FoxControler : MonoBehaviour
         {
             
             ScoreMenager.instance.subhp();
+            gameObject.GetComponent<SpriteRenderer>().color = Color.gray;
             if (ScoreMenager.instance.life == 0)
             {
                 source.clip = null;

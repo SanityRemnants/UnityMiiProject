@@ -79,10 +79,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 5
-  radius: 0.4
-  height: 0.82
+  radius: 0.47
+  height: 0.68
   canMove: 1
-  maxSpeed: 6
+  maxSpeed: 4
   gravity: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2
@@ -149,8 +149,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.09237766, y: 0.09029865}
-  m_Size: {x: 0.59355736, y: 1.0690746}
+  m_Offset: {x: -0.0068159103, y: 0.09029865}
+  m_Size: {x: 0.9798908, y: 1.0690746}
   m_Direction: 0
 --- !u!82 &7319802211054285814
 AudioSource:
@@ -172,7 +172,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 1.0197697
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0

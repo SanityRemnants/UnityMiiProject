@@ -12,6 +12,7 @@ public class EnemyFollowControler : MonoBehaviour
     private CapsuleCollider2D Enemycollider;
     private AudioSource source;
     public AudioClip enemyHit_sound;
+    private float speed;
 
 
     private void Start()
@@ -19,27 +20,34 @@ public class EnemyFollowControler : MonoBehaviour
         Enemycollider = GetComponent<CapsuleCollider2D>();
         destinationSetter = GetComponent<AIDestinationSetter>();
         aIPath = GetComponent<AIPath>();
+        speed = aIPath.maxSpeed;
     }
 
     private void Awake()
     {
+        
         source = GetComponent<AudioSource>();
         startPosition = transform.position;
     }
     // Update is called once per frame
     void Update()
     {
-        if (ScoreMenager.instance.CheckIfPlayerAlive())
+        if (!ScoreMenager.instance.CheckIfPlayerAlive())
         {
-
+            destinationSetter.enabled = false;
+            aIPath.destination = startPosition;
+        }
+        else
+        {
+            aIPath.maxSpeed = speed;
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
        if (collision.CompareTag("attack"))
         {
-            aIPath.destination = transform.position;
-            ScoreMenager.instance.addPoint(3);
+            aIPath.enabled = false;
+            ScoreMenager.instance.addPoint(6);
             source.PlayOneShot(enemyHit_sound, AudioListener.volume);
             Enemycollider.enabled = false;
             destinationSetter.enabled = false;
@@ -48,6 +56,7 @@ public class EnemyFollowControler : MonoBehaviour
 
         }else if(collision.CompareTag("Player"))
         {
+            aIPath.maxSpeed = 20;
             destinationSetter.enabled = false;
             aIPath.destination = startPosition;
         }
