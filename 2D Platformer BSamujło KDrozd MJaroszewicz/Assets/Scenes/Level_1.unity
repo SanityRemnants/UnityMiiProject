@@ -3664,7 +3664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8490566, g: 0.8279251, b: 0.1802243, a: 1}
+  m_Color: {r: 0.85098046, g: 0.82745105, b: 0.18039216, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3672,7 +3672,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 652f7165b7c30ab46af6c4aad90a639b, type: 2}
+    m_Font: {fileID: 12800000, guid: 585188cdc4600544eb408bee749e4b3a, type: 3}
     m_FontSize: 68
     m_FontStyle: 0
     m_BestFit: 0
@@ -4805,6 +4805,86 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 69984593325183319, guid: ea0c513c952566049bd49d5162df769d, type: 3}
   m_PrefabInstance: {fileID: 565210184}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &572671673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 572671674}
+  - component: {fileID: 572671676}
+  - component: {fileID: 572671675}
+  m_Layer: 5
+  m_Name: Cooldown
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &572671674
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572671673}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.9630879, y: 2.8464777, z: 1.9630879}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 745784043}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -102.08716, y: 191}
+  m_SizeDelta: {x: 503.2478, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &572671675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572671673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.85098046, g: 0.82745105, b: 0.18039216, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 22f09d036a5c2c94bad2476c20965278, type: 2}
+    m_FontSize: 22
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Attack Cooldown: 2.5'
+--- !u!222 &572671676
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572671673}
+  m_CullTransparentMesh: 1
 --- !u!4 &572867883 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 69984593325183319, guid: ea0c513c952566049bd49d5162df769d, type: 3}
@@ -6996,6 +7076,7 @@ RectTransform:
   - {fileID: 575168692}
   - {fileID: 1716410198}
   - {fileID: 1286341016}
+  - {fileID: 572671674}
   m_Father: {fileID: 1641245471}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -25169,6 +25250,7 @@ MonoBehaviour:
   lvnumber: 1
   currentscore: {fileID: 1972101182}
   bestscore: {fileID: 371397831}
+  cooldown: {fileID: 572671675}
   currentQuality: {fileID: 1572771163}
   InGameCanvas: {fileID: 745784046}
   pauseCanvas: {fileID: 1645873588}
@@ -26169,7 +26251,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6772791708187060018, guid: ff0a41b6d54680c4882b04cb73d378c0, type: 3}
       propertyPath: moveSpeed
-      value: 2.4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6772791708187060025, guid: ff0a41b6d54680c4882b04cb73d378c0, type: 3}
       propertyPath: m_Name
@@ -27387,11 +27469,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6772791708187060018, guid: ff0a41b6d54680c4882b04cb73d378c0, type: 3}
       propertyPath: moveRange
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6772791708187060018, guid: ff0a41b6d54680c4882b04cb73d378c0, type: 3}
       propertyPath: moveSpeed
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6772791708187060025, guid: ff0a41b6d54680c4882b04cb73d378c0, type: 3}
       propertyPath: m_Name
@@ -28811,11 +28893,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6772791708187060018, guid: ff0a41b6d54680c4882b04cb73d378c0, type: 3}
       propertyPath: moveRange
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6772791708187060018, guid: ff0a41b6d54680c4882b04cb73d378c0, type: 3}
       propertyPath: moveSpeed
-      value: 2.4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6772791708187060025, guid: ff0a41b6d54680c4882b04cb73d378c0, type: 3}
       propertyPath: m_Name
@@ -28839,7 +28921,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6772791708187060028, guid: ff0a41b6d54680c4882b04cb73d378c0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -74.92
+      value: -76.58
       objectReference: {fileID: 0}
     - target: {fileID: 6772791708187060028, guid: ff0a41b6d54680c4882b04cb73d378c0, type: 3}
       propertyPath: m_LocalPosition.y

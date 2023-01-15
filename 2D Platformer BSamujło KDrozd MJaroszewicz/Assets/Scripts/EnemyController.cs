@@ -14,6 +14,8 @@ public class EnemyController : MonoBehaviour
     private bool isMovingRight = false;
     private CapsuleCollider2D Enemycollider;
     public GameObject kill;
+    private AudioSource source;
+    public AudioClip enemyHit_sound;
 
 
     private void Start()
@@ -54,6 +56,7 @@ public class EnemyController : MonoBehaviour
 
     private void Awake()
     {
+        source = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         startPositionX = this.transform.position.x;
     }
@@ -88,15 +91,16 @@ public class EnemyController : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-            if (collision.CompareTag("Player"))
+            if (collision.CompareTag("attack"))
             {
-                if (collision.gameObject.transform.position.y > kill.transform.position.y)
-                {
-                    isAlive = false;
+                ScoreMenager.instance.addPoint(3);
+                //Debug.Log("Killed an enemy");
+                source.PlayOneShot(enemyHit_sound, AudioListener.volume);
+            
+            isAlive = false;
                     Enemycollider.enabled = false;
                     animator.SetBool("isDead", true);
                     StartCoroutine(KillOnAnimationEnd());
-                }
             }
     }
 

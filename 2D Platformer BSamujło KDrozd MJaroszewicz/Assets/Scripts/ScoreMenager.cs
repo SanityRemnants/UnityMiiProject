@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System;
 
 
 public enum GameState { GS_PAUSEMENU, GS_GAME, GS_LEVELCOMPLETED, GS_GAME_OVER, GS_OPTIONS }
@@ -20,6 +21,7 @@ public class ScoreMenager : MonoBehaviour
     public string lvnumber = "0";
     public Text currentscore;
     public Text bestscore;
+    public Text cooldown;
     public Text currentQuality;
     public Canvas InGameCanvas;
     public Canvas pauseCanvas;
@@ -135,6 +137,18 @@ public class ScoreMenager : MonoBehaviour
         InGameCanvas.enabled = false;
         pauseCanvas.enabled = true;
         Time.timeScale = 0;
+    }
+    public void setCooldown(float time)
+    {
+        if (time > 0.0)
+        {
+            decimal cd = Math.Round((decimal)time, 3);
+            cooldown.text = "Attack cooldown: " + cd.ToString();
+        }
+        else
+        {
+            cooldown.text = null;
+        }
     }
     public void InGame()
     {

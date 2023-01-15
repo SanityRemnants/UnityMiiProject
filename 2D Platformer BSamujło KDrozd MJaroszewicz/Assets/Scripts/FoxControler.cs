@@ -11,7 +11,6 @@ public class FoxControler : MonoBehaviour
     private Animator animator;
     private bool isWalking;
     private bool isFacingRight=true;
-    private int score = 0;
     public AudioClip bsound;
     public AudioClip gsound;
     public AudioClip vsound;
@@ -31,7 +30,9 @@ public class FoxControler : MonoBehaviour
     public LayerMask groundLayer;
     public LayerMask platformLayer;
     public GameObject attack;
-    private BoxCollider2D attackCollider;
+    public CapsuleCollider2D mainCollider;
+    private float cooldown;
+    public float AttackCooldown;
 
     private void Start()
     {
@@ -40,6 +41,14 @@ public class FoxControler : MonoBehaviour
 
     private void Update()
     {
+        if (cooldown > 0)
+        {
+            cooldown -= Time.deltaTime;
+            if (cooldown < 0)
+                cooldown = 0;
+           
+        }
+        ScoreMenager.instance.setCooldown(cooldown);
         isWalking = false;
         if (ScoreMenager.instance.currentGameState == GameState.GS_GAME)
         {       
@@ -54,8 +63,11 @@ public class FoxControler : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
                 {
-                attack.SetActive(true);
-                StartCoroutine(attackoff());
+                if (cooldown<=0)
+                {
+                    attack.SetActive(true);
+                    StartCoroutine(attackoff());
+                }
                 
                  }
                 if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
@@ -91,11 +103,11 @@ public class FoxControler : MonoBehaviour
             }
                 //Debug.DrawRay(transform.position, rayLength*Vector3.down, Color.white, 1, false);
         }
+
     }
 
     private void Awake()
     {
-        attackCollider = attack.GetComponent<BoxCollider2D>();
         source = GetComponent<AudioSource>();
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -106,8 +118,9 @@ public class FoxControler : MonoBehaviour
     }
     private IEnumerator attackoff()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.209f);
         attack.SetActive(false);
+        cooldown = AttackCooldown;
     }
     private bool isGrounded()
     {
@@ -146,18 +159,14 @@ public class FoxControler : MonoBehaviour
     {
         if (other.CompareTag("bonus"))
         {
-            score++;
             source.PlayOneShot(bsound, AudioListener.volume);
             ScoreMenager.instance.addPoint(1);
-            Debug.Log("Score: " + score);
             other.gameObject.SetActive(false);
         }
         else if (other.CompareTag("gem"))
         {
-            score += 5;
             source.PlayOneShot(gsound, AudioListener.volume);
             ScoreMenager.instance.addPoint(5);
-            Debug.Log("Score: " + score);
             other.gameObject.SetActive(false);
         }
         else if (other.CompareTag("Key"))
@@ -192,17 +201,7 @@ public class FoxControler : MonoBehaviour
         }
         else if (other.CompareTag("Enemy"))
         {
-            if (transform.position.y > other.gameObject.transform.position.y)
-            {
-                score += 3;
-                ScoreMenager.instance.addPoint(3);
-                Debug.Log("Killed an enemy");
-                Debug.Log("Score: " + score);
-                source.PlayOneShot(enemyHit_sound, AudioListener.volume);
-            }
-            else
-            {
-                
+            if (mainCollider.IsTouching(other))  { 
                 ScoreMenager.instance.subhp();
                 if (ScoreMenager.instance.life == 0)
                 {
@@ -210,7 +209,7 @@ public class FoxControler : MonoBehaviour
                     source.PlayOneShot(lost_sound, AudioListener.volume * 2);
 
                     Death();
-                    
+
 
                 }
                 else
@@ -219,6 +218,7 @@ public class FoxControler : MonoBehaviour
                     transform.position = startPosition;
                 }
             }
+            
         }
 
         else if (other.CompareTag("Live"))
