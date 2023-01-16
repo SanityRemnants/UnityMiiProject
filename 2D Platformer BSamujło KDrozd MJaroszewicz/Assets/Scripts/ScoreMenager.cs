@@ -36,6 +36,7 @@ public class ScoreMenager : MonoBehaviour
     private float timeToAppear = 2f;
     private float timeWhenDisappear;
     private bool playerAlive = true;
+    public Button continueButton;
 
     // Start is called before the first frame update
 
@@ -124,6 +125,10 @@ public class ScoreMenager : MonoBehaviour
             youNeedKey();
             return false;
         }
+    }
+    public void loadLvl(string nr)
+    {
+        SceneManager.LoadScene("Level_"+nr);
     }
     public void ReachRespawn()
     {
@@ -227,7 +232,8 @@ public class ScoreMenager : MonoBehaviour
     }
     public void death()
     {
-
+        if(continueButton!=null)
+        continueButton.gameObject.SetActive(false);
         VictoryText.text = "GAME OVER";
         victoryText.fontSize = 20;
         currentscore.text = "Score: " + score.ToString();

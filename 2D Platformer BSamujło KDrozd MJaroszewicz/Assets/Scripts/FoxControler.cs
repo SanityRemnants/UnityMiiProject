@@ -222,25 +222,29 @@ public class FoxControler : MonoBehaviour
         }
         else if (other.CompareTag("Enemy"))
         {
-            if (mainCollider.IsTouching(other))  { 
-                ScoreMenager.instance.subhp();
-                gameObject.GetComponent<SpriteRenderer>().color = Color.gray;
-                mainCollider.enabled = false;
-                if (ScoreMenager.instance.life == 0)
+            if (ScoreMenager.instance.CheckIfPlayerAlive())
+            {
+                if (mainCollider.IsTouching(other))
                 {
-                    source.clip = null;
-                    source.PlayOneShot(lost_sound, AudioListener.volume * 2);
+                    ScoreMenager.instance.subhp();
+                    gameObject.GetComponent<SpriteRenderer>().color = Color.gray;
+                    if (ScoreMenager.instance.life == 0)
+                    {
+                        source.clip = null;
+                        source.PlayOneShot(lost_sound, AudioListener.volume * 2);
 
-                    Death();
+                        Death();
 
 
-                }
-                else
-                {
-                    source.PlayOneShot(hit_sound, AudioListener.volume);
-                    transform.position = startPosition;
+                    }
+                    else
+                    {
+                        source.PlayOneShot(hit_sound, AudioListener.volume);
+                        transform.position = startPosition;
+                    }
                 }
             }
+            
             
         }
 
