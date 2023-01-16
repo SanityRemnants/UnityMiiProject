@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 using System;
 
 
-public enum GameState { GS_PAUSEMENU, GS_GAME, GS_LEVELCOMPLETED, GS_GAME_OVER, GS_OPTIONS }
+public enum GameState { GS_PAUSEMENU, GS_GAME, GS_LEVELCOMPLETED, GS_GAME_OVER, GS_OPTIONS, GS_INTRO }
 
 public class ScoreMenager : MonoBehaviour
 {
@@ -27,6 +27,7 @@ public class ScoreMenager : MonoBehaviour
     public Canvas pauseCanvas;
     public Canvas victoryCanvas;
     public Canvas optionsCanvas;
+    public Canvas IntroCanvas;
     public Text VictoryText;
     public Text message;
     public Text HP;
@@ -53,21 +54,24 @@ public class ScoreMenager : MonoBehaviour
 
         scoreText.text = score.ToString() + " POINTS";
         HP.text = "x" + life.ToString();
-        currentGameState = GameState.GS_GAME;
-        InGameCanvas.enabled = true;
+
+        if (IntroCanvas != null)
+        {
+            InGameCanvas.enabled = false;
+            IntroCanvas.enabled = true;
+            currentGameState = GameState.GS_INTRO;
+        }
+        else
+        {
+            currentGameState = GameState.GS_GAME;
+            InGameCanvas.enabled = true;
+        }
         pauseCanvas.enabled = false;
         optionsCanvas.enabled = false;
         victoryCanvas.enabled = false;
         Time.timeScale = 1;
     }
-    public void unpause()
-    {
-        currentGameState = GameState.GS_GAME;
-        InGameCanvas.enabled = true;
-        pauseCanvas
-            .enabled = false;
-        Time.timeScale = 1;
-    }
+ 
     public void SetVolume(float Value)
     {
         AudioListener.volume = Value;
@@ -247,7 +251,7 @@ public class ScoreMenager : MonoBehaviour
         {
             message.enabled = false;
         }
-        if (Input.GetKeyUp(KeyCode.Escape))
+        if ((Input.GetKeyUp(KeyCode.Escape))&&currentGameState!=GameState.GS_INTRO)
         {
             if(currentGameState == GameState.GS_PAUSEMENU) {
                 SetGameState(GameState.GS_GAME);
@@ -256,6 +260,14 @@ public class ScoreMenager : MonoBehaviour
             else
             {
                 SetGameState(GameState.GS_PAUSEMENU);
+            }
+        }
+        if (currentGameState == GameState.GS_INTRO)
+        {
+            if (Input.anyKey)
+            {
+                IntroCanvas.enabled = false;
+                SetGameState(GameState.GS_GAME);
             }
         }
     }

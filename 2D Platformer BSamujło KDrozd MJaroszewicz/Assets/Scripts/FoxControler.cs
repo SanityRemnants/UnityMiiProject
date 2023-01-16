@@ -124,7 +124,10 @@ public class FoxControler : MonoBehaviour
             }
                 //Debug.DrawRay(transform.position, rayLength*Vector3.down, Color.white, 1, false);
         }
-
+        if (ScoreMenager.instance.currentGameState == GameState.GS_INTRO)
+        {
+            animator.SetBool("isGrounded", true);
+        }
     }
 
     private void Awake()
