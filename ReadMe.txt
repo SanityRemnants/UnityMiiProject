@@ -1,0 +1,15 @@
+https://assetstore.unity.com/packages/2d/environments/2d-ice-world-106818
+https://assetstore.unity.com/packages/2d/environments/2d-ice-platform-pack-39371
+https://assetstore.unity.com/packages/2d/fonts/free-pixel-font-thaleah-140059
+https://assetstore.unity.com/packages/2d/characters/enemy-galore-1-pixel-art-208921
+https://assetstore.unity.com/packages/2d/characters/sunny-land-103349
+https://www.youtube.com/@RootGames - platform tutorials for moving and one way platforms
+https://assetstore.unity.com/packages/2d/environments/pixel-skies-demo-background-pack-226622
+https://assetstore.unity.com/packages/2d/characters/gothicvania-swamp-152865#content
+https://www.youtube.com/watch?v=jvtFUfJ6CP8
+https://arongranberg.com/astar/front
+https://assetstore.unity.com/packages/audio/music/8bit-music-062022-225623
+https://assetstore.unity.com/packages/2d/characters/enemy-galore-1-pixel-art-208921
+https://assetstore.unity.com/packages/audio/sound-fx/fantasy-sfx-32833
+https://assetstore.unity.com/packages/audio/sound-fx/free-sound-effects-pack-155776
+https://assetstore.unity.com/packages/audio/sound-fx/retro-game-sfx-60365

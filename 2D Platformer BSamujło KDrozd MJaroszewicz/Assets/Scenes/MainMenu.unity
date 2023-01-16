@@ -453,7 +453,10 @@ PrefabInstance:
       value: Level 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3900090113801962083, guid: ad73dcd8f91b72141a07189cfef7a6ef, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1524440999}
   m_SourcePrefab: {fileID: 100100000, guid: ad73dcd8f91b72141a07189cfef7a6ef, type: 3}
 --- !u!224 &356556154 stripped
 RectTransform:
@@ -1105,7 +1108,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 2
-    m_TransformParent: {fileID: 969290506}
+    m_TransformParent: {fileID: 356556154}
     m_Modifications:
     - target: {fileID: 3322971351330806284, guid: ad73dcd8f91b72141a07189cfef7a6ef, type: 3}
       propertyPath: m_Text
@@ -1249,7 +1252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3900090113801962083, guid: ad73dcd8f91b72141a07189cfef7a6ef, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -72
+      value: 25.099983
       objectReference: {fileID: 0}
     - target: {fileID: 3900090113801962083, guid: ad73dcd8f91b72141a07189cfef7a6ef, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1701,7 +1704,4 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3900090113801962083, guid: ad73dcd8f91b72141a07189cfef7a6ef, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1050051838}
-    - targetCorrespondingSourceObject: {fileID: 3900090113801962083, guid: ad73dcd8f91b72141a07189cfef7a6ef, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1524440999}
   m_SourcePrefab: {fileID: 100100000, guid: ad73dcd8f91b72141a07189cfef7a6ef, type: 3}

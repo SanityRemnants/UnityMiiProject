@@ -53128,6 +53128,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1177464113}
     m_Modifications:
+    - target: {fileID: 6772791708187060018, guid: ff0a41b6d54680c4882b04cb73d378c0, type: 3}
+      propertyPath: moveSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6772791708187060025, guid: ff0a41b6d54680c4882b04cb73d378c0, type: 3}
       propertyPath: m_Name
       value: Enemy (1)
@@ -59539,6 +59543,7 @@ MonoBehaviour:
   pauseCanvas: {fileID: 275905391}
   victoryCanvas: {fileID: 1886815048}
   optionsCanvas: {fileID: 701501725}
+  IntroCanvas: {fileID: 0}
   VictoryText: {fileID: 997866139}
   message: {fileID: 307773717}
   HP: {fileID: 1226909312}
